@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kauf dein Gehlhaar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #1e3c72, #2a5298);
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: rgba(0,0,0,0.4);
+      padding: 20px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    main {
+      padding: 50px 20px;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background: gold;
+      border: none;
+      padding: 12px 20px;
+      font-size: 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background: orange;
+      transform: scale(1.1);
+    }
+
+    .eingabeBox {
+      margin-top: 30px;
+      display: none;
+    }
+
+    input {
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      font-size: 16px;
+      width: 200px;
+      text-align: center;
+    }
+
+    #ausgabe {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #ffd700;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 15px;
+      background: rgba(0,0,0,0.3);
+      font-size: 14px;
+    }
+
+    .sprechblase {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      max-width: 200px;
+      padding: 15px;
+      border-radius: 20px;
+      background: white;
+      color: black;
+      font-size: 14px;
+      line-height: 1.4;
+      display: none;
+    }
+
+    .links {
+      left: 20px;
+      border-top-left-radius: 0;
+    }
+
+    .rechts {
+      right: 20px;
+      border-top-right-radius: 0;
+    }
+
+    #shopButton {
+      display: none; /* erst nach Login sichtbar */
+    }
+  </style>
+</head>
+<body>
+  <header>
+    Hier gibt es das beste Spielzeug für GROß und, klein!
+  </header>
+
+  <main>
+    <h1>Willkommen!</h1>
+    <p>Dein Gehlhaar wartet...🎉</p>
+    <button onclick="zeigeNameBox()">Deinen Namen eingeben</button>
+
+    <div id="nameBox" class="eingabeBox">
+      <input type="text" id="name" placeholder="Dein Name">
+      <button onclick="pruefeName()">Weiter</button>
+    </div>
+
+    <div id="passwortBox" class="eingabeBox">
+      <input type="password" id="passwort" placeholder="Passwort">
+      <button onclick="pruefePasswort()">Login</button>
+    </div>
+
+    <div id="ausgabe"></div>
+
+    <!-- Sprechblasen -->
+    <div id="sprechblaseLinks" class="sprechblase links">
+      Willkommen im SKH RODEWISCH...
+    </div>
+    <div id="sprechblaseRechts" class="sprechblase rechts">
+      Nett hier...aber waren sie schon mal im SKH RODEWISCH
+    </div>
+
+    <!-- Shop Button -->
+    <div>
+      <button id="shopButton" onclick="geheZumShop()">🛒 Zum Shop</button>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 Projekt Website – Alle Rechte besitzen Vasco und Hannes
+  </footer>
+
+  <script>
+    let gespeicherterName = "";
+
+    function zeigeNameBox() {
+      document.getElementById("nameBox").style.display = "block";
+    }
+
+    function pruefeName() {
+      const name = document.getElementById("name").value;
+      if (name) {
+        gespeicherterName = name;
+        document.getElementById("nameBox").style.display = "none";
+        document.getElementById("passwortBox").style.display = "block";
+      } else {
+        alert("Bitte gib deinen Namen ein!");
+      }
+    }
+
+    function pruefePasswort() {
+      const passwort = document.getElementById("passwort").value;
+      const richtigesPasswort = "1234"; // <-- ändern nach Wunsch
+
+      if (passwort === richtigesPasswort) {
+        document.getElementById("passwortBox").style.display = "none";
+        document.getElementById("ausgabe").textContent =
+          "Willkommen, " + gespeicherterName + "! ✅ Zugang erlaubt.";
+
+        // Sprechblasen anzeigen
+        document.getElementById("sprechblaseLinks").style.display = "block";
+        document.getElementById("sprechblaseRechts").style.display = "block";
+
+        // Shop-Button sichtbar machen
+        document.getElementById("shopButton").style.display = "inline-block";
+      } else {
+        document.getElementById("ausgabe").textContent =
+          "Falsches Passwort ❌. Versuch es nochmal!";
+      }
+    }
+
+    function geheZumShop() {
+      window.location.href = "shop.html"; // leitet auf Shop-Seite weiter
+    }
+  </script>
+</body>
+</html>

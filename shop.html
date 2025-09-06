@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #1e3c72, #2a5298);
+      color: white;
+      text-align: center;
+    }
+
+    header {
+      background: rgba(0,0,0,0.4);
+      padding: 20px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    main {
+      padding: 50px 20px;
+    }
+
+    h1 {
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+
+    .produkt {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 20px;
+      margin: 20px auto;
+      width: 250px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    .produkt h2 {
+      color: gold;
+    }
+
+    button {
+      background: red;
+      border: none;
+      padding: 10px 15px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 10px;
+      color: white;
+    }
+
+    button:hover {
+      background: darkred;
+      transform: scale(1.05);
+    }
+
+    #meldung {
+      margin-top: 30px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #ffd700;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 15px;
+      background: rgba(0,0,0,0.3);
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    🛒 Shop – Geheimbereich
+  </header>
+
+  <main>
+    <h1>Willkommen im Shop!</h1>
+
+    <div class="produkt">
+      <h2>Einfacher Gehlhaar</h2>
+      <p>(einfacher gehlhaar ist nur als deko)
+                         25€</p>
+      <button onclick="kaufen('Einfacher Gehlhaar')">Kaufen</button>
+    </div>
+
+    <div class="produkt">
+      <h2>Gehlhaar+</h2>
+      <p>(gehlhaar+ hat die besten witze und sätze, perfeckt für; Liebes kummer, blöder tag in der Schule/auf der Arbeit, usw.)50€</p>
+      <button onclick="kaufen('Gehlhaar+')">Kaufen</button>
+    </div>
+
+    <!-- Ausgabe-Bereich -->
+    <div id="meldung"></div>
+  </main>
+
+  <footer>
+    © 2025 Mein geheimer Shop – Alle Rechte vorbehalten
+  </footer>
+
+  <script>
+    function kaufen(produkt) {
+      const meldung = document.getElementById("meldung");
+      meldung.textContent = "Das Produkt " + produkt + " ist leider nicht verfügbar";
+    }
+  </script>
+</body>
+</html>
